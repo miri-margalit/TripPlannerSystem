@@ -1,0 +1,13 @@
+<form #login="ngForm" (ngSubmit)="onSubmit(login)">
+  <label>Email</label>
+  <input type="email" name="email" ngModel />
+  <label>Password</label>
+  <input type="password" name="password" ngModel />
+  <button type="submit">Login</button>
+  @if (error()) {
+    <p>{{ error() }}</p>
+    @if (error() === 'user is not found') {
+      <button [routerLink]="['/register']">Go To Register</button>
+    }
+  }
+</form>

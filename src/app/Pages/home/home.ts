@@ -1,0 +1,21 @@
+import { Component, inject } from '@angular/core';
+import { AuthService } from '../../services/AuthService';
+import { Router, RouterOutlet, RouterLinkWithHref } from '@angular/router';
+
+@Component({
+  selector: 'app-home',
+  imports: [RouterOutlet, RouterLinkWithHref],
+  templateUrl: './home.html',
+  styleUrl: './home.css',
+})
+export class Home {
+
+  private authService = inject(AuthService);
+  private route = inject(Router);
+  logedUser = this.authService.currentUser;
+
+  logout() {
+    this.authService.logout();
+    this.route.navigate(['/login']);
+  }
+}

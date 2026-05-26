@@ -1,0 +1,10 @@
+<header>
+  <h1>BOOKING APP</h1>
+
+  <button [routerLink]="['all-trips']">All Trips</button>
+  <button [routerLink]="['my-trips']">My Trips</button>
+
+  <button (click)="logout()">Logout</button>
+</header>
+
+<router-outlet></router-outlet>

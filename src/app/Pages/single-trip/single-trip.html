@@ -1,0 +1,8 @@
+<h1>{{ singleTrip().name }}</h1>
+<h2>{{ singleTrip().destination }}</h2>
+<h3>From : {{ singleTrip().startDate }}</h3>
+<h3>To: {{ singleTrip().endDate }}</h3>
+<h3>{{ singleTrip().description }}</h3>
+<img [src]="singleTrip().image" alt="" />
+<h3>{{ singleTrip().price }}$</h3>
+<button>Book Trip</button>
