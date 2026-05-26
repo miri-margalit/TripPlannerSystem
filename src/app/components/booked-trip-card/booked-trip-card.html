@@ -1,0 +1,15 @@
+<h1>{{ trip()?.name }}</h1>
+
+<h2>{{ trip()?.destination }}</h2>
+
+<h3>From: {{ trip()?.startDate }}</h3>
+
+<h3>To: {{ trip()?.endDate }}</h3>
+
+<h3>{{ trip()?.description }}</h3>
+
+<img [src]="trip()?.image" alt="" />
+
+<h3>{{ trip()?.price }}$</h3>
+
+<h3>{{ bookedTrip()?.people }}</h3>

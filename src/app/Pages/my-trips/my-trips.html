@@ -1,1 +1,3 @@
-<h1>trip</h1>
+@for (booking of bookings(); track $index) {
+  <app-booked-trip-card [bookedTrip]="booking"></app-booked-trip-card>
+}

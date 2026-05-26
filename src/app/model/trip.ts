@@ -1,10 +1,10 @@
 export interface trip {
-  id: Number;
+  id: number;
   name: string;
   destination: string;
   startDate: Date;
   endDate: Date;
-  price: Number;
+  price: number;
   description: string;
   image: string;
 }

@@ -1,8 +1,14 @@
-<h1>{{ singleTrip().name }}</h1>
-<h2>{{ singleTrip().destination }}</h2>
-<h3>From : {{ singleTrip().startDate }}</h3>
-<h3>To: {{ singleTrip().endDate }}</h3>
-<h3>{{ singleTrip().description }}</h3>
-<img [src]="singleTrip().image" alt="" />
-<h3>{{ singleTrip().price }}$</h3>
-<button>Book Trip</button>
+@if (trip(); as trip) {
+  <article class="trip-card">
+    <h1>{{ trip.name }}</h1>
+    <h2>{{ trip.destination }}</h2>
+    <img [src]="trip.image" [alt]="trip.name" />
+    <p>{{ trip.description }}</p>
+    <div class="trip-dates">
+      <span>From: {{ trip.startDate }}</span>
+      <span>To: {{ trip.endDate }}</span>
+    </div>
+    <p class="trip-price">{{ trip.price }}$</p>
+    <button type="button">Book Trip</button>
+  </article>
+}

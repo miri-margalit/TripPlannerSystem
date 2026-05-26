@@ -1,4 +1,4 @@
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import { APIService } from './APIService';
 import { map, Observable } from 'rxjs';
 import { booking } from '../model/booking';
@@ -9,17 +9,22 @@ import { booking } from '../model/booking';
 export class bookingService {
   private api = inject(APIService);
 
+  allBookings = signal<booking[]>([]);
+
   getAllBooking(): Observable<booking[]> {
-    return this.api.get<booking[]>('booking');
+    return this.api.get<booking[]>('bookings');
   }
 
   addBooking(booking: booking) {
-    return this.api.post<booking>('booking', booking);
+    return this.api.post<booking>('bookings', booking);
   }
 
-  getAllBookingByUserId(userId: Number) {
-    return this.getAllBooking().pipe(
-      map((bookings) => bookings.filter((booking) => booking.userId === userId)),
-    );
+  loadBookingsByUserId(userId: number) {
+    this.api
+      .get<booking[]>('bookings')
+      .pipe(map((bookings) => bookings.filter((b) => b.userId === userId)))
+      .subscribe((filtered) => {
+        this.allBookings.set(filtered);
+      });
   }
 }

@@ -10,7 +10,6 @@ export class TripsService {
   private api = inject(APIService);
 
   allTrips = signal<trip[]>([]);
-  singleTrip = signal<trip>({} as trip);
   error = signal<string>('');
   loading = signal<boolean>(false);
 
@@ -19,22 +18,17 @@ export class TripsService {
     this.api.get<trip[]>('trips').subscribe({
       next: (res) => {
         this.allTrips.set(res);
+        this.loading.set(false);
       },
       error: (err) => {
         this.error.set('error with loading trips');
+        this.loading.set(false);
       },
     });
   }
 
-  getTripById(tripId: Number) {
-    this.api.get<trip>(`trips/${tripId}`).subscribe({
-      next: (res) => {
-        this.singleTrip.set(res);
-      },
-      error: (err) => {
-        this.error.set('couldnt find this trip');
-      },
-    });
+  getTripById(id: number) {
+   return this.allTrips().find((t) => t.id === id);
   }
 
   addTrip(trip: trip) {
@@ -45,7 +39,7 @@ export class TripsService {
     return this.api.put(`trips/${trip.id}`, trip);
   }
 
-  deleteTrip(tripId: Number) {
+  deleteTrip(tripId: number) {
     return this.api.delete(`trips/${tripId}`);
   }
 }
