@@ -10,6 +10,9 @@
 
 <img [src]="trip()?.image" alt="" />
 
-<h3>{{ trip()?.price }}$</h3>
+<h3> Price: {{ trip()?.price }}$</h3>
 
-<h3>{{ bookedTrip()?.people }}</h3>
+<h3>Travelers: {{ bookedTrip()?.people }}</h3>
+
+<button type="button" (click)="cancelBooking()">Cancel Booking</button>
+

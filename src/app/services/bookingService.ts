@@ -19,12 +19,13 @@ export class bookingService {
     return this.api.post<booking>('bookings', booking);
   }
 
-  loadBookingsByUserId(userId: number) {
-    this.api
-      .get<booking[]>('bookings')
-      .pipe(map((bookings) => bookings.filter((b) => b.userId === userId)))
-      .subscribe((filtered) => {
-        this.allBookings.set(filtered);
-      });
-  }
+  loadBookingsByUserId(userId: any) {
+  this.api
+    .get<booking[]>('bookings')
+    .subscribe((allBookings) => {
+      const filtered = allBookings.filter((b) => String(b.userId) === String(userId));
+      this.allBookings.set(filtered);
+    });
+}
+
 }

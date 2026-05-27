@@ -62,6 +62,20 @@
       "email": "1234@gmail.com",
       "password": "02580258",
       "isAdmin": false
+    },
+    {
+      "id": "R2yfzC2pExM",
+      "name": "leah",
+      "email": "leahf7657@gmail.com",
+      "password": "12345678",
+      "isAdmin": false
+    },
+    {
+      "id": "zhLjMvtvH58",
+      "name": "yael",
+      "email": "yael@gmail.com",
+      "password": "123456789",
+      "isAdmin": false
     }
   ],
   "trips": [
@@ -208,6 +222,72 @@
       "tripId": 1,
       "userId": 1,
       "people": 3
+    },
+    {
+      "tripId": "1",
+      "userId": 1,
+      "people": 1,
+      "id": "ZlgYamtG6WU"
+    },
+    {
+      "tripId": "1",
+      "userId": 1,
+      "people": 1,
+      "id": "58Gdd0AHGsI"
+    },
+    {
+      "tripId": "1",
+      "userId": 1,
+      "people": 1,
+      "id": "lFPg5BuVM7A"
+    },
+    {
+      "tripId": "1",
+      "userId": 1,
+      "people": 1,
+      "id": "EkA1Z6bUGiY"
+    },
+    {
+      "tripId": "1",
+      "userId": 1,
+      "people": 1,
+      "id": "oIEvbBqgRQw"
+    },
+    {
+      "tripId": "1",
+      "userId": 1,
+      "people": 1,
+      "id": "D56hExeME4o"
+    },
+    {
+      "tripId": "1",
+      "userId": 1,
+      "people": 1,
+      "id": "YGm8q_iKZK8"
+    },
+    {
+      "tripId": "1",
+      "userId": "R2yfzC2pExM",
+      "people": 1,
+      "id": "wnoqiN7e9GY"
+    },
+    {
+      "tripId": "1",
+      "userId": 0,
+      "people": 1,
+      "id": "mqKjfSdJZFs"
+    },
+    {
+      "tripId": "1",
+      "userId": 0,
+      "people": 1,
+      "id": "PEaZn8j90nY"
+    },
+    {
+      "tripId": "1",
+      "userId": "zhLjMvtvH58",
+      "people": 1,
+      "id": "pL_HXjNRtw0"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

@@ -20,7 +20,7 @@ export class MyTrips implements OnInit {
   ngOnInit() {
     const id = this.logesUser()?.id;
     if (id) {
-      this.bookingService.loadBookingsByUserId(Number(id));
+      this.bookingService.loadBookingsByUserId(id);
     }
   }
 }

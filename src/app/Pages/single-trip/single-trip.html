@@ -9,6 +9,6 @@
       <span>To: {{ trip.endDate }}</span>
     </div>
     <p class="trip-price">{{ trip.price }}$</p>
-    <button type="button">Book Trip</button>
+    <button type="button" (click)="bookTrip()">Book Trip</button>
   </article>
 }
