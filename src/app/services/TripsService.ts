@@ -27,8 +27,9 @@ export class TripsService {
     });
   }
 
-  getTripById(id: number) {
-   return this.allTrips().find((t) => t.id === id);
+  getTripById(id: string) {
+    const trips = this.allTrips();
+    return trips.find((t) => String(t.id) === String(id));
   }
 
   addTrip(trip: trip) {

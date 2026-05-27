@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { AuthService } from '../../services/AuthService';
 import { Router, RouterOutlet, RouterLinkWithHref } from '@angular/router';
+import { TripsService } from '../../services/TripsService';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +10,6 @@ import { Router, RouterOutlet, RouterLinkWithHref } from '@angular/router';
   styleUrl: './home.css',
 })
 export class Home {
-
   private authService = inject(AuthService);
   private route = inject(Router);
   logedUser = this.authService.currentUser;
@@ -17,5 +17,9 @@ export class Home {
   logout() {
     this.authService.logout();
     this.route.navigate(['/login']);
+  }
+
+  constructor(private tripsService: TripsService) {
+    this.tripsService.getTrips();
   }
 }

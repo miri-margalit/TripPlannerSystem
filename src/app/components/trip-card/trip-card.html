@@ -1,4 +1,8 @@
 <h2>{{ trip()?.name }}</h2>
 <h3>{{ trip()?.destination }}</h3>
 <img [src]="trip()?.image" alt="" />
-<button [routerLink]="['/home/all-trips', trip()?.id]">Explore Trip</button>
+@if (mode() === 'my') {
+  <button (click)="goToBooking()">View Trip</button>
+} @else {
+  <button [routerLink]="['/home/all-trips', trip()?.id]">Explore Trip</button>
+}

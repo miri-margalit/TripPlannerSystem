@@ -9,6 +9,34 @@
       <span>To: {{ trip.endDate }}</span>
     </div>
     <p class="trip-price">{{ trip.price }}$</p>
-    <button type="button" (click)="bookTrip()">Book Trip</button>
+    <div class="people-counter">
+      <button (click)="decreasePeople()">-</button>
+
+      <span> {{ people }} </span>
+
+      <button (click)="increasePeople()">+</button>
+    </div>
+
+    <button
+      (click)="bookTrip()"
+      [disabled]="isUserBooked(trip.id)"
+      [class.disabled]="isUserBooked(trip.id)"
+    >
+      Register
+    </button>
+
+    @if (isUserBooked(trip.id)) {
+      <p>You are already registered for this trip</p>
+    }
+
+    @if (bookingSuccess()) {
+      <div class="popup">
+        <div class="popup-content">
+          <p>Trip booked successfully!</p>
+
+          <button (click)="closePopup()">Close</button>
+        </div>
+      </div>
+    }
   </article>
 }

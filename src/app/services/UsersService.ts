@@ -13,7 +13,7 @@ export class usersService {
     return this.api.get<user[]>('users');
   }
 
-  getUserById(userId: Number): Observable<user> {
+  getUserById(userId: string): Observable<user> {
     return this.api.get<user>(`users/${userId}`);
   }
 

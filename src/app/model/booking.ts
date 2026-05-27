@@ -1,6 +1,6 @@
 export interface booking {
-  id: number;
-  tripId: number;
-  userId: number;
+  id: string;
+  tripId: string;
+  userId: string;
   people: number;
 }

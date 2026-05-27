@@ -63,12 +63,11 @@ export class AuthService {
       //משתמש קיים
       if (existingUser) {
         this.error.set('user already exists');
-        this.router.navigate(['/login']);
         return;
       }
 
       const newUser: user = {
-        id: 0,
+        id: String(Date.now()),
         name: dataUser.name,
         email: dataUser.email,
         password: dataUser.password,

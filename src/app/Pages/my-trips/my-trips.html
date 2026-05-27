@@ -1,3 +1,11 @@
-@for (booking of bookings(); track $index) {
-<app-booked-trip-card [bookedTrip]="booking" (bookingCanceled)="ngOnInit()"></app-booked-trip-card>
+@if (bookings().length == 0) {
+  <p>run book your next trip</p>
+} @else {
+  @for (booking of bookings(); track booking.id) {
+    <app-trip-card
+      [trip]="getTrip(booking.tripId)"
+      mode="my"
+      [bookingId]="booking.id"
+    ></app-trip-card>
+  }
 }

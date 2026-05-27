@@ -10,9 +10,23 @@
 
 <img [src]="trip()?.image" alt="" />
 
-<h3> Price: {{ trip()?.price }}$</h3>
+<h3>Price: {{ trip()?.price }}$</h3>
 
 <h3>Travelers: {{ bookedTrip()?.people }}</h3>
 
-<button type="button" (click)="cancelBooking()">Cancel Booking</button>
+@if (!isEditingPeople) {
+  <button type="button" (click)="editPeople()">Edit Travelers</button>
+}
 
+@if (isEditingPeople) {
+  <div class="people-counter">
+    <button (click)="decreasePeople()">-</button>
+
+    <span>{{ people }}</span>
+
+    <button (click)="increasePeople()">+</button>
+  </div>
+
+  <button type="button" (click)="savePeople()">Save</button>
+}
+<button type="button" (click)="cancelBooking()">Cancel Booking</button>

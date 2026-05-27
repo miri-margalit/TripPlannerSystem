@@ -26,5 +26,6 @@ export class Register {
     }
 
     this.authService.register(form.value);
+    form.resetForm();
   }
 }

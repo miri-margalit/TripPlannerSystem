@@ -3,7 +3,7 @@ import { TripsService } from '../../services/TripsService';
 import { ActivatedRoute, Router } from '@angular/router';
 import { APIService } from '../../services/APIService';
 import { AuthService } from '../../services/AuthService';
-
+import { bookingService } from '../../services/bookingService';
 
 @Component({
   selector: 'app-single-trip',
@@ -18,42 +18,67 @@ export class SingleTrip {
   private apiService = inject(APIService);
   private router = inject(Router);
   private authService = inject(AuthService);
+  private bookingService = inject(bookingService);
 
+  user = this.authService.currentUser;
+  bookings = this.bookingService.allBookings;
+  people: number = 1;
+  bookingSuccess = this.bookingService.bookingSuccess;
 
+  increasePeople() {
+    this.people++;
+  }
 
-  tripId = computed(() => Number(this.route.snapshot.paramMap.get('id')));//מספר הטיול
-   trip = computed(() => {//ניגש לסרביס ומחפש לפי המספר את הטיול
-    const idAsNumber = this.tripId();
-    let found = this.tripService.getTripById(idAsNumber);//במקרה שהוגדר כמספר ימצא את הטיול המבוקש
-    if (!found) {// במקרה הנוכחי מוגדר בדאטה כסטרינג
-      found = this.tripService.getTripById(String(idAsNumber) as any);
+  decreasePeople() {
+    if (this.people > 0) {
+      this.people--;
     }
-    return found;
+  }
+
+  tripId = computed(() => Number(this.route.snapshot.paramMap.get('id')));
+
+  trip = computed(() => {
+    return this.tripService.getTripById(String(this.tripId()));
   });
+
   bookTrip() {
-  const currentTrip = this.trip();
-  if (!currentTrip) {
-    return;
-  }
-  const currentUserId = this.authService.currentUser()?.id;
+    const currentTrip = this.trip();
 
-  const newBooking = {
-    tripId: currentTrip.id,
-    userId: currentUserId,
-    people: 1
-  };
-    console.log('ההזמנה מוכנה לשליחה:', newBooking);
+    if (!currentTrip) {
+      return;
+    }
+
+    const currentUserId = Number(this.authService.currentUser()?.id);
+
+    const newBooking = {
+      tripId: Number(currentTrip.id),
+      userId: Number(currentUserId),
+      people: this.people,
+    };
+
+    console.log('the order is ready to send', newBooking);
+
     this.apiService.post('bookings', newBooking).subscribe({
-  next: (response) => {
-    console.log('הטיול נשמר בהצלחה בשרת!', response);
-    this.router.navigate(['/home/my-trips']);
-  },
-  error: (err) => {
-    console.error('שגיאה בזמן השמירה בשרת:', err);
+      next: (response) => {
+        console.log('the order have saved in the server', response);
+        this.bookingService.bookingSuccess.set(true);
+      },
+      error: (err) => {
+        console.error('problem with saving the new order', err);
+      },
+    });
   }
-});
 
+  isUserBooked(tripId: string | number): boolean {
+    const userId = this.user()?.id;
 
-}
+    return this.bookings().some(
+      (b) => String(b.tripId) === String(tripId) && String(b.userId) === String(userId),
+    );
+  }
 
+  closePopup() {
+    this.bookingService.bookingSuccess.set(false);
+    this.router.navigate(['/home/my-trips']);
+  }
 }

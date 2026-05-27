@@ -1,12 +1,12 @@
 <form #register="ngForm" (ngSubmit)="onSubmit(register)">
   <label>UserName</label>
-  <input type="text" name="name" ngModel />
+  <input type="text" name="name" ngModel required=""/>
   <label>Email</label>
-  <input type="email" name="email" ngModel />
+  <input type="email" name="email" ngModel required="" />
   <label>Password</label>
-  <input type="password" name="password" ngModel required minlength="8"/>
+  <input type="password" name="password" ngModel required minlength="8" />
   <label>Confirm Password</label>
-  <input type="password" name="confirmPassword" ngModel />
+  <input type="password" name="confirmPassword" ngModel required=""/>
   <button type="submit">Register</button>
   @if (error()) {
     <p>{{ error() }}</p>
