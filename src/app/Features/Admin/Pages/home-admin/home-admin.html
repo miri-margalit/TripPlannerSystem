@@ -1,0 +1,12 @@
+@if (isAdmin()) {
+  <header>
+    <h1>BOOKING APP</h1>
+
+    <button [routerLink]="['all-trips']">All Trips</button>
+    <button [routerLink]="['all-booking']">All BOOKING</button>
+
+    <button (click)="logout()">Logout</button>
+  </header>
+}
+
+<router-outlet></router-outlet>

@@ -11,7 +11,7 @@ export class AuthService {
   private usersService = inject(usersService);
   private router = inject(Router);
 
-  currentUser = signal<user | null>(null);
+  currentUser = signal<user | null>(JSON.parse(localStorage.getItem('user') || 'null'));
   error = signal<string>('');
 
   constructor() {
@@ -41,12 +41,18 @@ export class AuthService {
 
         //שמירת המשתמש
         this.currentUser.set(user);
+
         //שמירת המשתמש ב localStorage
         localStorage.setItem('user', JSON.stringify(user));
 
         // הצלחה
         this.error.set('');
-        this.router.navigate(['/home']);
+
+        if (user.isAdmin === true) {
+          this.router.navigate(['/admin']);
+        } else {
+          this.router.navigate(['/home']);
+        }
       }),
 
       map(() => void 0),

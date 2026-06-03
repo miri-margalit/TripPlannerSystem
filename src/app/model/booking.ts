@@ -4,3 +4,10 @@ export interface booking {
   userId: string;
   people: number;
 }
+
+export interface BookingDetails {
+  booking: booking;
+  tripName: string;
+  userName: string;
+  people: number;
+}

@@ -1,0 +1,45 @@
+<div class="booking-card">
+  <div class="booking-info">
+    <p><strong>Trip:</strong> {{ tripName() }}</p>
+    <p><strong>Passenger:</strong> {{ userName() }}</p>
+    <p><strong>People:</strong> {{ booking().people }}</p>
+  </div>
+
+  <div class="actions">
+    <button class="edit-btn" (click)="onEditClick()">Edit</button>
+    <button class="delete-btn" (click)="onDeleteClick()">Delete</button>
+  </div>
+</div>
+
+@if (isEditOpen()) {
+  <div class="modal-overlay" (click)="onCancel()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <h3>Edit Participants</h3>
+      <label>
+        Number of People
+        <input
+          type="number"
+          min="1"
+          [ngModel]="editPeople()"
+          (ngModelChange)="editPeople.set($event)"
+        />
+      </label>
+      <div class="form-actions">
+        <button class="save-btn" (click)="onSaveEdit()">Save</button>
+        <button class="cancel-btn" (click)="onCancel()">Cancel</button>
+      </div>
+    </div>
+  </div>
+}
+
+@if (isDeleteOpen()) {
+  <div class="modal-overlay" (click)="onCancel()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <h3>Are you sure you want to delete this booking?</h3>
+      <div class="form-actions">
+        <button class="delete-btn" (click)="onConfirmDelete()">Yes, Delete</button>
+        <button class="cancel-btn" (click)="onCancel()">Cancel</button>
+      </div>
+    </div>
+  </div>
+}

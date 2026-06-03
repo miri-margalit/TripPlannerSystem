@@ -1,0 +1,42 @@
+<div class="trip-card">
+  <img [src]="trip().image" alt="trip image" class="trip-image" />
+
+  <div class="trip-info">
+    <h2>{{ trip().name }}</h2>
+    <p><strong>Destination:</strong> {{ trip().destination }}</p>
+    <p><strong>Start Date:</strong> {{ trip().startDate }}</p>
+    <p><strong>End Date:</strong> {{ trip().endDate }}</p>
+    <p><strong>Price:</strong> ${{ trip().price }}</p>
+    <p><strong>Participants:</strong> {{ participants() }}</p>
+    <p class="description">{{ trip().description }}</p>
+  </div>
+
+  <div class="actions">
+    <button class="edit-btn" (click)="onEdit()">Edit</button>
+    <button class="delete-btn" (click)="onDeleteClick()">Delete</button>
+  </div>
+
+  @if (deleteError()) {
+    <p class="error-msg">{{ deleteError() }}</p>
+  }
+</div>
+
+@if (isEditOpen()) {
+  <div class="modal-overlay" (click)="onCloseEdit()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <app-admin-edit-form [trip]="trip()" (closeForm)="onCloseEdit()"> </app-admin-edit-form>
+    </div>
+  </div>
+}
+
+@if (isDeleteOpen()) {
+  <div class="modal-overlay" (click)="onCancelDelete()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <h3>Are you sure you want to delete this trip?</h3>
+      <div class="form-actions">
+        <button class="delete-btn" (click)="onConfirmDelete()">Yes, Delete</button>
+        <button class="cancel-btn" (click)="onCancelDelete()">Cancel</button>
+      </div>
+    </div>
+  </div>
+}

@@ -1,6 +1,6 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { APIService } from './APIService';
-import { map, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { booking } from '../model/booking';
 
 @Injectable({

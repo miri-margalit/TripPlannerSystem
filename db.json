@@ -29,59 +29,10 @@
       "isAdmin": false
     },
     {
-      "id": "5",
-      "name": "MIRIAM MARGALIT",
-      "email": "miri418438@gmail.com",
-      "password": "1234",
-      "isAdmin": false
-    },
-    {
-      "id": "6",
-      "name": "leah",
-      "email": "leah@gmail.com",
-      "password": "12345",
-      "isAdmin": false
-    },
-    {
-      "id": "7",
-      "name": "leah",
-      "email": "leah123@gmail.com",
-      "password": "123456789",
-      "isAdmin": false
-    },
-    {
-      "id": "8",
-      "name": "מרים מרגלית",
-      "email": "miri418@gmail.com",
-      "password": "215042052",
-      "isAdmin": false
-    },
-    {
-      "id": "9",
-      "name": "צפורה מרגלית",
-      "email": "1234@gmail.com",
-      "password": "02580258",
-      "isAdmin": false
-    },
-    {
-      "id": "10",
-      "name": "leah",
-      "email": "leahf7657@gmail.com",
-      "password": "12345678",
-      "isAdmin": false
-    },
-    {
-      "id": "11",
-      "name": "yael",
-      "email": "yael@gmail.com",
-      "password": "123456789",
-      "isAdmin": false
-    },
-    {
-      "id": "12",
-      "name": "miri123",
-      "email": "123456",
-      "password": "123456789",
+      "id": "nAZ-Am39vSI",
+      "name": "miri",
+      "email": "miri@miri",
+      "password": "987654321",
       "isAdmin": false
     }
   ],
@@ -189,12 +140,6 @@
   ],
   "bookings": [
     {
-      "id": "1",
-      "tripId": 1,
-      "userId": 1,
-      "people": 2
-    },
-    {
       "id": "2",
       "tripId": 2,
       "userId": 3,
@@ -231,64 +176,10 @@
       "people": 3
     },
     {
-      "tripId": "1",
-      "userId": 1,
-      "people": 1,
-      "id": "33"
-    },
-    {
-      "tripId": "1",
-      "userId": 1,
-      "people": 1,
-      "id": "10"
-    },
-    {
-      "tripId": "1",
-      "userId": 1,
-      "people": 1,
-      "id": "12"
-    },
-    {
       "tripId": 1,
-      "userId": 1,
-      "people": 1,
-      "id": "23"
-    },
-    {
-      "tripId": 1,
-      "userId": 1,
-      "people": 1,
-      "id": "19"
-    },
-    {
-      "tripId": 1,
-      "userId": 1779895403540,
+      "userId": 1780520304433,
       "people": 4,
-      "id": "T1g0vwNFkPY"
-    },
-    {
-      "tripId": 6,
-      "userId": 1779895403540,
-      "people": 4,
-      "id": "_qsN6cTylvE"
-    },
-    {
-      "tripId": 2,
-      "userId": 1779895403540,
-      "people": 2,
-      "id": "88-jHcc85Go"
-    },
-    {
-      "tripId": 9,
-      "userId": 1779895403540,
-      "people": 4,
-      "id": "93h4cMY_rps"
-    },
-    {
-      "tripId": 8,
-      "userId": 1779895403540,
-      "people": 3,
-      "id": "cfSt3bRqMs8"
+      "id": "E4oCMgtULuI"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

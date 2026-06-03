@@ -1,0 +1,68 @@
+<div class="edit-form">
+  <h2>Edit Trip</h2>
+
+  <label
+    >Name
+    <input
+      [(ngModel)]="formData().name"
+      (ngModelChange)="formData.set({ ...formData(), name: $event })"
+    />
+  </label>
+
+  <label
+    >Destination
+    <input
+      [(ngModel)]="formData().destination"
+      (ngModelChange)="formData.set({ ...formData(), destination: $event })"
+    />
+  </label>
+
+  <label
+    >Start Date
+    <input
+      type="date"
+      [(ngModel)]="formData().startDate"
+      (ngModelChange)="formData.set({ ...formData(), startDate: $event })"
+    />
+  </label>
+
+  <label
+    >End Date
+    <input
+      type="date"
+      [(ngModel)]="formData().endDate"
+      (ngModelChange)="formData.set({ ...formData(), endDate: $event })"
+    />
+  </label>
+
+  <label
+    >Price
+    <input
+      type="number"
+      [(ngModel)]="formData().price"
+      (ngModelChange)="formData.set({ ...formData(), price: $event })"
+    />
+  </label>
+
+  <label
+    >Description
+    <textarea
+      [(ngModel)]="formData().description"
+      (ngModelChange)="formData.set({ ...formData(), description: $event })"
+    >
+    </textarea>
+  </label>
+
+  <label
+    >Image URL
+    <input
+      [(ngModel)]="formData().image"
+      (ngModelChange)="formData.set({ ...formData(), image: $event })"
+    />
+  </label>
+
+  <div class="form-actions">
+    <button class="save-btn" (click)="onSave()">Save</button>
+    <button class="cancel-btn" (click)="onCancel()">Cancel</button>
+  </div>
+</div>
