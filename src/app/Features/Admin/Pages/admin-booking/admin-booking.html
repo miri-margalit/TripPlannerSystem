@@ -1,3 +1,18 @@
-@for (booking of allBookings(); track booking.id) {
+<div class="filter-bar">
+  <input
+    type="text"
+    placeholder="Search by booking ID..."
+    [ngModel]="searchId()"
+    (ngModelChange)="searchId.set($event)"
+  />
+  <input
+    type="text"
+    placeholder="Search by passenger name..."
+    [ngModel]="searchName()"
+    (ngModelChange)="searchName.set($event)"
+  />
+</div>
+
+@for (booking of filteredBookings(); track booking.id) {
   <app-admin-booking-card [booking]="booking"></app-admin-booking-card>
 }

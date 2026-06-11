@@ -1,8 +1,15 @@
 <div class="page-header">
+  <input
+    type="text"
+    class="search-input"
+    placeholder="Search by trip name..."
+    [ngModel]="searchTerm()"
+    (ngModelChange)="searchTerm.set($event)"
+  />
   <button class="add-btn" (click)="isAddOpen.set(true)">+ Add Trip</button>
 </div>
 
-@for (trip of allTrips(); track trip.id) {
+@for (trip of filteredTrips(); track trip.id) {
   <app-admin-trip-card [trip]="trip"></app-admin-trip-card>
 }
 
