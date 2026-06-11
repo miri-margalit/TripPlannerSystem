@@ -12,7 +12,7 @@ import { bookingService } from '../../services/bookingService';
   templateUrl: './single-trip.html',
   styleUrl: './single-trip.css',
 })
-export class SingleTrip {
+export class SingleTrip implements OnInit {
   private route = inject(ActivatedRoute);
   private tripService = inject(TripsService);
   private apiService = inject(APIService);
@@ -24,6 +24,10 @@ export class SingleTrip {
   bookings = this.bookingService.allBookings;
   people: number = 1;
   bookingSuccess = this.bookingService.bookingSuccess;
+
+  ngOnInit(): void {
+    this.bookingService.bookingSuccess.set(false);
+  }
 
   increasePeople() {
     this.people++;
@@ -48,32 +52,18 @@ export class SingleTrip {
       return;
     }
 
-<<<<<<< HEAD
     const currentUserId = this.authService.currentUser()?.id;
 
     const newBooking = {
       tripId: Number(currentTrip.id),
       userId: currentUserId,
-=======
-    const currentUserId = String(this.authService.currentUser()?.id);
-
-    const newBooking = {
-      tripId: String(currentTrip.id),
-      userId: String(currentUserId),
->>>>>>> aad6b206963738e1be35ae48282c2170c061cb07
       people: this.people,
     };
 
-    console.log('the order is ready to send', newBooking);
-
     this.apiService.post('bookings', newBooking).subscribe({
       next: (response: any) => {
-        console.log('the order have saved in the server', response);
         this.bookingService.allBookings.update(currentBookings => [...currentBookings, response]);
         this.bookingService.bookingSuccess.set(true);
-
-        const userId = String(this.authService.currentUser()?.id);
-        this.bookingService.loadBookingsByUserId(userId);
       },
       error: (err) => {
         console.error('problem with saving the new order', err);
@@ -91,6 +81,6 @@ export class SingleTrip {
 
   closePopup() {
     this.bookingService.bookingSuccess.set(false);
-    this.router.navigate(['/home/all-trips', this.trip()?.id]);
+    this.router.navigate(['/home/my-trips']);
   }
 }

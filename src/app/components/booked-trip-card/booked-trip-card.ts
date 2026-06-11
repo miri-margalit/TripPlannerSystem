@@ -18,17 +18,9 @@ export class BookedTripCard {
   trip = input<any>();
   bookingCanceled = output<void>();
 
-<<<<<<< HEAD
-=======
-  trip = computed(() => {
-    const booking = this.bookedTrip();
-
-    if (!booking) return null;
-
-    return this.tripService.getTripById(String(booking.tripId) as any);
-  });
-
-  showDeleteConfirm = false;
+  showDeleteConfirm: boolean = false;
+  isEditingPeople: boolean = false;
+  people: number = 0;
 
   openDeleteConfirm() {
     this.showDeleteConfirm = true;
@@ -38,27 +30,20 @@ export class BookedTripCard {
     this.showDeleteConfirm = false;
   }
 
->>>>>>> aad6b206963738e1be35ae48282c2170c061cb07
   cancelBooking() {
     const bookingId = this.bookedTrip()?.id;
     if (!bookingId) return;
 
     this.apiService.delete(`bookings/${bookingId}`).subscribe({
       next: () => {
-<<<<<<< HEAD
         console.log('the order canceled, and removed from the server');
         this.bookingService.allBookings.update(list => list.filter(b => String(b.id) !== String(bookingId)));
-=======
-        this.showDeleteConfirm = false;
->>>>>>> aad6b206963738e1be35ae48282c2170c061cb07
         this.bookingCanceled.emit();
+        this.showDeleteConfirm = false;
       },
       error: (err) => console.error('problems with deleting order', err),
     });
   }
-  
-  isEditingPeople: boolean = false;
-  people: number = 0;
 
   editPeople() {
     this.isEditingPeople = true;
