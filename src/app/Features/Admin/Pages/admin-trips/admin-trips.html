@@ -1,3 +1,15 @@
+<div class="page-header">
+  <button class="add-btn" (click)="isAddOpen.set(true)">+ Add Trip</button>
+</div>
+
 @for (trip of allTrips(); track trip.id) {
   <app-admin-trip-card [trip]="trip"></app-admin-trip-card>
+}
+
+@if (isAddOpen()) {
+  <div class="modal-overlay" (click)="isAddOpen.set(false)">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <app-admin-edit-form (closeForm)="isAddOpen.set(false)"></app-admin-edit-form>
+    </div>
+  </div>
 }

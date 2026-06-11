@@ -21,6 +21,10 @@ export class Login implements OnInit {
   }
 
   onSubmit(form: NgForm) {
+    if (form.invalid) {
+      form.control.markAllAsTouched();
+      return;
+    }
     this.authService.login(form.value).subscribe();
   }
 }

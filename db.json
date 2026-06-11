@@ -11,7 +11,7 @@
       "id": "2",
       "name": "Bob Smith",
       "email": "bob@example.com",
-      "password": "bobpass",
+      "password": "bobpass1234",
       "isAdmin": true
     },
     {
@@ -48,6 +48,27 @@
       "email": "miri418438@gmail.com",
       "password": "741852963",
       "isAdmin": false
+    },
+    {
+      "id": "fYAqW0MCNAU",
+      "name": "chasi",
+      "email": "chasi@",
+      "password": "789456123",
+      "isAdmin": false
+    },
+    {
+      "id": "huD5NscgA_M",
+      "name": "miri436",
+      "email": "miri",
+      "password": "7418529630",
+      "isAdmin": false
+    },
+    {
+      "id": "XT46DhYTqSI",
+      "name": "12234",
+      "email": "iop@gmail.com",
+      "password": "123456789",
+      "isAdmin": false
     }
   ],
   "trips": [
@@ -55,8 +76,8 @@
       "id": "1",
       "name": "Paris City Tour",
       "destination": "Paris, France",
-      "startDate": "2026-03-15",
-      "endDate": "2026-03-20",
+      "startDate": "2026-03-22",
+      "endDate": "2026-03-24",
       "price": 1500,
       "description": "Explore the Eiffel Tower, Louvre Museum, and Seine river cruise.",
       "image": "https://picsum.photos/id/1011/400/200"
@@ -147,13 +168,13 @@
       "id": "2",
       "tripId": 2,
       "userId": 3,
-      "people": 1
+      "people": 5
     },
     {
       "id": "3",
       "tripId": 3,
       "userId": 1,
-      "people": 3
+      "people": 5
     },
     {
       "id": "4",
@@ -262,6 +283,12 @@
       "userId": "Qax3FnlJihg",
       "people": 1,
       "id": "O0VO2-gfRzA"
+    },
+    {
+      "tripId": 2,
+      "userId": "iUnX4X6YZ28",
+      "people": 3,
+      "id": "308aSoO0hcQ"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
