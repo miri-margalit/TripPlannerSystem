@@ -45,6 +45,8 @@ export const routes: Routes = [
     canMatch: [adminGuard],
     component: HomeAdmin,
     children: [
+      { path: '', redirectTo: 'all-trips', pathMatch: 'full' },
+
       {
         path: 'all-trips',
         component: AdminTrips,

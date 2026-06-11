@@ -49,8 +49,14 @@ export class BookingService {
   }
 
   getTotalParticipantsByTripId(tripId: string): number {
+    console.log('allBookings:', this.allBooking());
+    console.log('tripId מחפשים:', tripId);
+    console.log(
+      'bookings של הטיול:',
+      this.allBooking().filter((b) => String(b.tripId) === String(tripId)),
+    );
     return this.allBooking()
-      .filter((b) => b.tripId === tripId)
+      .filter((b) => String(b.tripId) === String(tripId))
       .reduce((sum, b) => sum + b.people, 0);
   }
 

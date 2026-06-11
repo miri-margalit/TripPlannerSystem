@@ -41,6 +41,13 @@
       "email": "leahf7657@gmail.com",
       "password": "11223344",
       "isAdmin": false
+    },
+    {
+      "id": "iUnX4X6YZ28",
+      "name": "miri",
+      "email": "miri418438@gmail.com",
+      "password": "741852963",
+      "isAdmin": false
     }
   ],
   "trips": [
@@ -73,16 +80,6 @@
       "price": 1600,
       "description": "Tour the Colosseum, Vatican City, and Sistine Chapel.",
       "image": "https://picsum.photos/id/1021/400/200"
-    },
-    {
-      "id": "4",
-      "name": "Barcelona & Beaches",
-      "destination": "Barcelona, Spain",
-      "startDate": "2026-05-05",
-      "endDate": "2026-05-10",
-      "price": 1550,
-      "description": "Enjoy Gaudi architecture, La Rambla, and Mediterranean beaches.",
-      "image": "https://picsum.photos/id/1025/400/200"
     },
     {
       "id": "5",

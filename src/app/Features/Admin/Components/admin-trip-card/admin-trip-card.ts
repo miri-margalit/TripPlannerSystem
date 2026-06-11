@@ -36,6 +36,9 @@ export class AdminTripCard implements OnInit {
 
   onDeleteClick() {
     if (this.participants() > 0) {
+      console.log('participants:', this.participants());
+      console.log('trip id:', this.trip().id, typeof this.trip().id);
+
       this.deleteError.set(
         `Cannot delete — ${this.participants()} participants are registered to this trip.`,
       );

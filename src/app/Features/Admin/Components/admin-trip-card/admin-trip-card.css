@@ -1,0 +1,146 @@
+.trip-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.25rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  border: 1.5px solid #f3f4f6;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.trip-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.trip-image {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.trip-info h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 6px;
+}
+
+.trip-info p {
+  font-size: 13px;
+  color: #4b5563;
+  margin-bottom: 3px;
+}
+
+.trip-info strong {
+  color: #1f2937;
+  font-weight: 600;
+}
+
+.description {
+  color: #6b7280;
+  font-size: 13px;
+  line-height: 1.5;
+  margin-top: 4px;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.edit-btn {
+  background: #eff6ff;
+  color: #1d4ed8;
+  border: 1.5px solid #bfdbfe;
+  border-radius: 8px;
+  padding: 7px 16px;
+  font-weight: 500;
+  font-size: 13px;
+  flex: 1;
+}
+
+.edit-btn:hover {
+  background: #bfdbfe;
+}
+
+.delete-btn {
+  background: #fff1f2;
+  color: #e11d48;
+  border: 1.5px solid #fecdd3;
+  border-radius: 8px;
+  padding: 7px 16px;
+  font-weight: 500;
+  font-size: 13px;
+  flex: 1;
+}
+
+.delete-btn:hover {
+  background: #fecdd3;
+}
+
+.error-msg {
+  color: #e11d48;
+  font-size: 13px;
+  background: #fff1f2;
+  padding: 8px 12px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #fff;
+  border-radius: 20px;
+  padding: 2rem;
+  min-width: 320px;
+  max-width: 90vw;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+}
+
+.modal-content h3 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 1.25rem;
+}
+
+.form-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 1rem;
+}
+
+.form-actions .delete-btn {
+  flex: 1;
+}
+
+.form-actions .cancel-btn {
+  background: #f3f4f6;
+  color: #4b5563;
+  border-radius: 8px;
+  padding: 10px 24px;
+  font-weight: 500;
+  font-size: 14px;
+  flex: 1;
+}
+
+.form-actions .cancel-btn:hover {
+  background: #e5e7eb;
+}
