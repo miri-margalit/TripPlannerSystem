@@ -1,5 +1,13 @@
+<<<<<<< HEAD
 @if (bookedTripsDetailed().length == 0) {
   <p>Run book your next trip</p>
+=======
+@if (tripsservice.loading()) {
+  <p>Loading...</p>
+
+} @else if (bookings().length == 0) {
+  <p>run book your next trip</p>
+>>>>>>> aad6b206963738e1be35ae48282c2170c061cb07
 } @else {
   @for (item of bookedTripsDetailed(); track item.bookingId) {
     <app-trip-card

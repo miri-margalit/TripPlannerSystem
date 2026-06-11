@@ -29,4 +29,14 @@
 
   <button type="button" (click)="savePeople()">Save</button>
 }
-<button type="button" (click)="cancelBooking()">Cancel Booking</button>
+<button type="button" (click)="openDeleteConfirm()">Cancel Booking</button>
+
+@if (showDeleteConfirm) {
+  <div class="popup">
+    <div class="popup-content">
+      <p>Are you sure you want to cancel this booking?</p>
+      <button type="button" (click)="cancelBooking()">Delete</button>
+      <button type="button" (click)="closeDeleteConfirm()">Cancel</button>
+    </div>
+  </div>
+}

@@ -3,6 +3,7 @@ import { AuthService } from '../../services/AuthService';
 import { bookingService } from '../../services/bookingService';
 import { TripCard } from '../../components/trip-card/trip-card';
 import { TripsService } from '../../services/TripsService';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-my-trips',
@@ -17,6 +18,7 @@ export class MyTrips {
   private tripsService = inject(TripsService);
 
   bookings = this.bookingService.allBookings;
+<<<<<<< HEAD
   allTrips = this.tripsService.allTrips;
 
   bookedTripsDetailed = computed(() => {
@@ -43,6 +45,22 @@ export class MyTrips {
     });
 
     this.tripsService.getTrips();
+=======
+  tripsservice = this.tripsSetvice;
+
+  constructor() {
+  effect(() => {
+    const user = this.logesUser();
+    if (!user?.id) return;
+
+    this.tripsSetvice.getTrips(); // טען טיולים קודם
+    this.bookingService.loadBookingsByUserId(user.id);
+  });
+}
+
+  getTrip(bookingId: string) {
+    return this.tripsSetvice.getTripById(bookingId);
+>>>>>>> aad6b206963738e1be35ae48282c2170c061cb07
   }
 
   removeBooking(id: string) {
