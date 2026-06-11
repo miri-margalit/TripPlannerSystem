@@ -1,0 +1,142 @@
+.trip-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  max-width: 680px;
+  margin: 2rem auto;
+  box-shadow: var(--shadow-md);
+}
+
+.trip-card h1 {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--gray-800);
+  margin-bottom: 4px;
+}
+
+.trip-card h2 {
+  font-size: 15px;
+  color: var(--gray-400);
+  font-weight: 400;
+  margin-bottom: 1.25rem;
+}
+
+.trip-card img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  margin-bottom: 1.25rem;
+}
+
+.trip-card p {
+  color: var(--gray-600);
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.trip-dates {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.trip-dates span {
+  background: var(--blue-light);
+  color: var(--blue-dark);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.trip-price {
+  font-family: 'Poppins', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--pink-dark);
+  margin-bottom: 1.25rem;
+}
+
+.people-counter {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 1.25rem;
+}
+
+.people-counter button {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--pink-light);
+  color: var(--pink-dark);
+  border: 1.5px solid var(--pink-mid);
+  font-size: 18px;
+  font-weight: 600;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.people-counter button:hover {
+  background: var(--pink-mid);
+}
+
+.people-counter span {
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--gray-800);
+  min-width: 32px;
+  text-align: center;
+}
+
+.trip-card > button {
+  width: 100%;
+  padding: 13px;
+  background: linear-gradient(135deg, var(--pink), var(--blue));
+  color: var(--white);
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 2px 8px rgba(244, 114, 182, 0.3);
+  margin-bottom: 1rem;
+}
+
+.trip-card > button:hover:not(:disabled) {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.trip-card > button.disabled,
+.trip-card > button:disabled {
+  background: var(--gray-200);
+  color: var(--gray-400);
+  box-shadow: none;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.trip-card > p:last-of-type {
+  text-align: center;
+  color: var(--pink-dark);
+  font-size: 13px;
+  background: var(--pink-light);
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+}
+
+.popup-content button {
+  background: linear-gradient(135deg, var(--pink), var(--blue));
+  color: var(--white);
+  padding: 10px 28px;
+  border-radius: var(--radius-sm);
+  font-weight: 500;
+}
+
+.popup-content button:hover {
+  opacity: 0.9;
+}

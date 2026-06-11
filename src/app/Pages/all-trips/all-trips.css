@@ -1,0 +1,33 @@
+
+.filter-container {
+  display: flex;
+  gap: 12px;
+  padding: 1.5rem 2rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.search-input {
+  flex: 1;
+  min-width: 200px;
+  max-width: 360px;
+}
+
+.sort-select {
+  min-width: 180px;
+}
+
+.trips-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  padding: 0 2rem 3rem;
+}
+
+.trips-grid p {
+  grid-column: 1/-1;
+  text-align: center;
+  color: var(--gray-400);
+  font-size: 16px;
+  padding: 3rem;
+}

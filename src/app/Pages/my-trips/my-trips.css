@@ -1,0 +1,18 @@
+
+:host {
+  display: block;
+  padding: 2rem;
+}
+
+p {
+  text-align: center;
+  color: var(--gray-400);
+  font-size: 16px;
+  margin-top: 4rem;
+}
+
+.trips-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}

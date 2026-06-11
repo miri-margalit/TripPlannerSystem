@@ -247,6 +247,18 @@
       "userId": null,
       "people": 1,
       "id": "xj7G7Kt09Q8"
+    },
+    {
+      "tripId": 6,
+      "userId": "salOOBd3atU",
+      "people": 4,
+      "id": "RQtgYmw50R0"
+    },
+    {
+      "tripId": 1,
+      "userId": "salOOBd3atU",
+      "people": 2,
+      "id": "EUnV91Og1bM"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

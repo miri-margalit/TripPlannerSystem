@@ -1,0 +1,122 @@
+:host {
+  display: block;
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-md);
+  max-width: 680px;
+  margin: 2rem auto;
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--gray-800);
+  margin-bottom: 4px;
+}
+
+h2 {
+  font-size: 14px;
+  color: var(--gray-400);
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+
+h3 {
+  font-size: 14px;
+  color: var(--gray-600);
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+
+img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  margin-bottom: 1.25rem;
+}
+
+.people-counter {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 1rem 0;
+}
+
+.people-counter button {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--pink-light);
+  color: var(--pink-dark);
+  border: 1.5px solid var(--pink-mid);
+  font-size: 18px;
+  font-weight: 600;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.people-counter button:hover {
+  background: var(--pink-mid);
+}
+
+.people-counter span {
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--gray-800);
+  min-width: 28px;
+  text-align: center;
+}
+
+button[type='button'] {
+  margin-top: 10px;
+  border-radius: var(--radius-sm);
+  padding: 10px 20px;
+  font-weight: 500;
+}
+
+button[type='button']:first-of-type {
+  background: var(--blue-light);
+  color: var(--blue-dark);
+  border: 1.5px solid var(--blue-mid);
+  margin-right: 8px;
+}
+
+button[type='button']:first-of-type:hover {
+  background: var(--blue-mid);
+}
+
+button[type='button'].cancel-btn,
+button[type='button']:last-of-type {
+  background: #fff1f2;
+  color: #e11d48;
+  border: 1.5px solid #fecdd3;
+}
+
+button[type='button'].cancel-btn:hover,
+button[type='button']:last-of-type:hover {
+  background: #fecdd3;
+}
+
+.popup-content button:first-of-type {
+  background: #e11d48;
+  color: var(--white);
+  margin-right: 8px;
+}
+
+.popup-content button:first-of-type:hover {
+  background: #be123c;
+}
+
+.popup-content button:last-of-type {
+  background: var(--gray-200);
+  color: var(--gray-600);
+}
+
+.popup-content button:last-of-type:hover {
+  background: #d1d5db;
+}
