@@ -1,4 +1,4 @@
-import { Component, computed, inject } from '@angular/core';
+import { Component, computed, inject, OnInit } from '@angular/core';
 import { TripsService } from '../../services/TripsService';
 import { ActivatedRoute, Router } from '@angular/router';
 import { APIService } from '../../services/APIService';
@@ -12,7 +12,7 @@ import { bookingService } from '../../services/bookingService';
   templateUrl: './single-trip.html',
   styleUrl: './single-trip.css',
 })
-export class SingleTrip {
+export class SingleTrip implements OnInit {
   private route = inject(ActivatedRoute);
   private tripService = inject(TripsService);
   private apiService = inject(APIService);
@@ -24,6 +24,10 @@ export class SingleTrip {
   bookings = this.bookingService.allBookings;
   people: number = 1;
   bookingSuccess = this.bookingService.bookingSuccess;
+
+  ngOnInit(): void {
+    this.bookingService.bookingSuccess.set(false);
+  }
 
   increasePeople() {
     this.people++;
