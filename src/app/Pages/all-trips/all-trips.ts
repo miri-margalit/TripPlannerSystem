@@ -14,6 +14,9 @@ export class AllTrips implements OnInit {
   private tripService = inject(TripsService);
 
   trips = this.tripService.allTrips;
+  loading = this.tripService.loading;
+  error = this.tripService.error;
+
 
   searchTerm = signal<string>('');
   sortBy = signal<string>('none');

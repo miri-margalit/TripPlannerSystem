@@ -17,11 +17,22 @@
     <option value="highToLow">Price: High to Low</option>
   </select>
 </div>
-
-<div class="trips-grid">
+  @if (loading()) {
+  <div class="loading-message">
+    <p>Loading trips, please wait...</p>
+  </div>
+}
+@if (error()) {
+  <div class="error-message">
+    <p>{{ error() }}</p>
+  </div>
+}
+@if (!loading() && !error()) {
+  <div class="trips-grid">
   @for (trip of filteredAndSortedTrips(); track trip.id) {
     <app-trip-card [trip]="trip" />
   } @empty {
     <p>No trips found matching your search.</p>
   }
 </div>
+}

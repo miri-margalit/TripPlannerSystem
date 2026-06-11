@@ -259,6 +259,12 @@
       "userId": "salOOBd3atU",
       "people": 2,
       "id": "EUnV91Og1bM"
+    },
+    {
+      "tripId": 1,
+      "userId": "Qax3FnlJihg",
+      "people": 1,
+      "id": "O0VO2-gfRzA"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
