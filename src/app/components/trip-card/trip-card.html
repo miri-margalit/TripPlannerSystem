@@ -1,8 +1,18 @@
-<h2>{{ trip()?.name }}</h2>
-<h3>{{ trip()?.destination }}</h3>
-<img [src]="trip()?.image" alt="" />
-@if (mode() === 'my') {
-  <button (click)="goToBooking()">View Trip</button>
+@if (!showDetails()) {
+  <h2>{{ trip()?.name }}</h2>
+  <h3>{{ trip()?.destination }}</h3>
+  <img [src]="trip()?.image" alt="" />
+  
+  @if (mode() === 'my') {
+    <button (click)="goToBooking()">View Trip</button>
+  } @else {
+    <button [routerLink]="['/home/all-trips', trip()?.id]">Explore Trip</button>
+  }
 } @else {
-  <button [routerLink]="['/home/all-trips', trip()?.id]">Explore Trip</button>
+  <app-booked-trip-card
+    [bookedTrip]="bookedTrip()"
+    [trip]="trip()"
+  ></app-booked-trip-card>
+  
+  <button type="button" (click)="showDetails.set(false)" style="margin-top: 10px; background-color: #6c757d; color: white; padding: 5px 10px; border: none; border-radius: 4px; cursor: pointer;">Back</button>
 }

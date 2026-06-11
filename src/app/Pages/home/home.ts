@@ -12,7 +12,9 @@ import { TripsService } from '../../services/TripsService';
 export class Home {
   private authService = inject(AuthService);
   private route = inject(Router);
+  
   logedUser = this.authService.currentUser;
+  user = this.authService.currentUser;
 
   logout() {
     this.authService.logout();

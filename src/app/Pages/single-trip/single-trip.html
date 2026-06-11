@@ -1,14 +1,14 @@
-@if (trip(); as trip) {
+@if (trip(); as currentTrip) {
   <article class="trip-card">
-    <h1>{{ trip.name }}</h1>
-    <h2>{{ trip.destination }}</h2>
-    <img [src]="trip.image" [alt]="trip.name" />
-    <p>{{ trip.description }}</p>
+    <h1>{{ currentTrip.name }}</h1>
+    <h2>{{ currentTrip.destination }}</h2>
+    <img [src]="currentTrip.image" [alt]="currentTrip.name" />
+    <p>{{ currentTrip.description }}</p>
     <div class="trip-dates">
-      <span>From: {{ trip.startDate }}</span>
-      <span>To: {{ trip.endDate }}</span>
+      <span>From: {{ currentTrip.startDate }}</span>
+      <span>To: {{ currentTrip.endDate }}</span>
     </div>
-    <p class="trip-price">{{ trip.price }}$</p>
+    <p class="trip-price">{{ currentTrip.price }}$</p>
     <div class="people-counter">
       <button (click)="decreasePeople()">-</button>
 
@@ -19,13 +19,13 @@
 
     <button
       (click)="bookTrip()"
-      [disabled]="isUserBooked(trip.id)"
-      [class.disabled]="isUserBooked(trip.id)"
+      [disabled]="isUserBooked(currentTrip.id)"
+      [class.disabled]="isUserBooked(currentTrip.id)"
     >
       Register
     </button>
 
-    @if (isUserBooked(trip.id)) {
+    @if (isUserBooked(currentTrip.id)) {
       <p>You are already registered for this trip</p>
     }
 

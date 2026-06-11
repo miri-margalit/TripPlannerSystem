@@ -1,11 +1,25 @@
-@if (bookings().length == 0) {
-  <p>run book your next trip</p>
+@if (bookedTripsDetailed().length == 0) {
+  <p>Run book your next trip</p>
 } @else {
-  @for (booking of bookings(); track booking.id) {
+  @for (item of bookedTripsDetailed(); track item.bookingId) {
     <app-trip-card
-      [trip]="getTrip(booking.tripId)"
+      [trip]="item.trip"
       mode="my"
-      [bookingId]="booking.id"
+      [bookingId]="item.bookingId"
+      [bookedTrip]="item.bookingData"
+      (bookingCanceled)="removeBooking(item.bookingId)"
+    ></app-trip-card>
+  }@if (bookedTripsDetailed().length == 0) {
+  <p>Run book your next trip</p>
+} @else {
+  @for (item of bookedTripsDetailed(); track item.bookingId) {
+    <app-trip-card
+      [trip]="item.trip"
+      mode="my"
+      [bookingId]="item.bookingId"
+      [bookedTrip]="item.bookingData"
     ></app-trip-card>
   }
+}
+
 }

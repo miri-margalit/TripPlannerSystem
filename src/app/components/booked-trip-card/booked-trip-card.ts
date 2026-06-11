@@ -1,48 +1,42 @@
-import { Component, computed, inject, input, output } from '@angular/core';
+import { Component, inject, input, output } from '@angular/core';
 import { booking } from '../../model/booking';
-import { TripsService } from '../../services/TripsService';
 import { APIService } from '../../services/APIService';
+import { bookingService } from '../../services/bookingService';
 
 @Component({
   selector: 'app-booked-trip-card',
+  standalone: true,
   imports: [],
   templateUrl: './booked-trip-card.html',
   styleUrl: './booked-trip-card.css',
 })
 export class BookedTripCard {
-  private tripService = inject(TripsService);
   private apiService = inject(APIService);
+  private bookingService = inject(bookingService);
 
   bookedTrip = input<booking>();
+  trip = input<any>();
   bookingCanceled = output<void>();
-
-  trip = computed(() => {
-    const booking = this.bookedTrip();
-
-    if (!booking) return null;
-
-    return this.tripService.getTripById(String(booking.tripId) as any);
-  });
 
   cancelBooking() {
     const bookingId = this.bookedTrip()?.id;
-
     if (!bookingId) return;
+
     this.apiService.delete(`bookings/${bookingId}`).subscribe({
       next: () => {
-        console.log('the order cancle, and removed from the server');
+        console.log('the order canceled, and removed from the server');
+        this.bookingService.allBookings.update(list => list.filter(b => String(b.id) !== String(bookingId)));
         this.bookingCanceled.emit();
       },
       error: (err) => console.error('problems with deleting order', err),
     });
   }
+  
   isEditingPeople: boolean = false;
-
   people: number = 0;
 
   editPeople() {
     this.isEditingPeople = true;
-
     this.people = this.bookedTrip()?.people || 0;
   }
 
@@ -58,7 +52,6 @@ export class BookedTripCard {
 
   savePeople() {
     const booking = this.bookedTrip();
-
     if (!booking) return;
 
     const updatedBooking = {
@@ -71,9 +64,7 @@ export class BookedTripCard {
         booking.people = this.people;
         this.isEditingPeople = false;
       },
-      error: (err) => {
-        console.error(err);
-      },
+      error: (err) => console.error(err),
     });
   }
 }

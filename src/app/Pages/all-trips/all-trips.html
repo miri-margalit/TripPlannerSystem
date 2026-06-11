@@ -1,3 +1,27 @@
-@for (trip of trips(); track trip.id) {
-  <app-trip-card [trip]="trip"  />
-}
+<div class="filter-container">
+  <input 
+    type="text" 
+    placeholder="Search destinations..." 
+    [ngModel]="searchTerm()" 
+    (ngModelChange)="searchTerm.set($event)"
+    class="search-input"
+  />
+
+  <select 
+    [ngModel]="sortBy()" 
+    (ngModelChange)="sortBy.set($event)"
+    class="sort-select"
+  >
+    <option value="none">Sort by Price</option>
+    <option value="lowToHigh">Price: Low to High</option>
+    <option value="highToLow">Price: High to Low</option>
+  </select>
+</div>
+
+<div class="trips-grid">
+  @for (trip of filteredAndSortedTrips(); track trip.id) {
+    <app-trip-card [trip]="trip" />
+  } @empty {
+    <p>No trips found matching your search.</p>
+  }
+</div>

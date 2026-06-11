@@ -20,15 +20,18 @@ export class bookingService {
     return this.api.post<booking>('bookings', booking);
   }
 
-  loadBookingsByUserId(userId: string) {
+    loadBookingsByUserId(userId: any) {
     this.api.get<booking[]>('bookings').subscribe((allBookings) => {
       console.log('API RESPONSE:', allBookings);
 
-      const filtered = allBookings.filter((b) => String(b.userId) === String(userId));
+      const filtered = allBookings.filter((b) => {
+        if (!b.userId || !userId) return false;
+        return String(b.userId).toLowerCase().trim() === String(userId).toLowerCase().trim();
+      });
 
       console.log('filtered Bookings:', filtered);
-
       this.allBookings.set(filtered);
     });
   }
+
 }

@@ -1,11 +1,12 @@
-import { Component, inject, input, output, signal } from '@angular/core';
+import { Component, inject, input, signal } from '@angular/core';
 import { trip } from '../../model/trip';
-import { Router, RouterLink, RouterOutlet } from '@angular/router';
-import { booking } from '../../model/booking';
+import { RouterLink } from '@angular/router';
+import { BookedTripCard } from '../booked-trip-card/booked-trip-card';
 
 @Component({
   selector: 'app-trip-card',
-  imports: [RouterLink],
+  standalone: true,
+  imports: [RouterLink, BookedTripCard],
   templateUrl: './trip-card.html',
   styleUrl: './trip-card.css',
 })
@@ -13,12 +14,11 @@ export class TripCard {
   trip = input<trip>();
   mode = input<'my' | 'all'>('all');
   bookingId = input<string>();
+  bookedTrip = input<any>();
 
-  private router = inject(Router);
+  showDetails = signal<boolean>(false);
 
   goToBooking() {
-    if (!this.bookingId()) return;
-
-    this.router.navigate(['/home/my-trips', this.bookingId()]);
+    this.showDetails.set(true);
   }
 }

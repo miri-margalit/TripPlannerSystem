@@ -34,6 +34,13 @@
       "email": "miri@miri",
       "password": "987654321",
       "isAdmin": false
+    },
+    {
+      "id": "Qax3FnlJihg",
+      "name": "leah",
+      "email": "leahf7657@gmail.com",
+      "password": "11223344",
+      "isAdmin": false
     }
   ],
   "trips": [
@@ -180,6 +187,66 @@
       "userId": 1780520304433,
       "people": 4,
       "id": "E4oCMgtULuI"
+    },
+    {
+      "tripId": 1,
+      "userId": null,
+      "people": 2,
+      "id": "1znVJTCGijI"
+    },
+    {
+      "tripId": 1,
+      "userId": null,
+      "people": 1,
+      "id": "YOGXJwJqVrs"
+    },
+    {
+      "tripId": 3,
+      "userId": null,
+      "people": 1,
+      "id": "2CtAiDoidnU"
+    },
+    {
+      "tripId": 3,
+      "userId": null,
+      "people": 1,
+      "id": "RBcMdbjBz0Q"
+    },
+    {
+      "tripId": 1,
+      "userId": null,
+      "people": 1,
+      "id": "plRcMcUAODA"
+    },
+    {
+      "tripId": 1,
+      "userId": null,
+      "people": 1,
+      "id": "6jEtTQ60jXM"
+    },
+    {
+      "tripId": 1,
+      "userId": null,
+      "people": 1,
+      "id": "D2CXmCuOQEk"
+    },
+    {
+      "tripId": 1,
+      "userId": null,
+      "people": 1,
+      "id": "sHh5Goqa6ak"
+    },
+    {
+      "tripId": 1,
+      "userId": null,
+      "people": 1,
+      "id": "ZinmhTQrJvQ"
+    },
+    {
+      "tripId": 1,
+      "userId": null,
+      "people": 1,
+      "id": "xj7G7Kt09Q8"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

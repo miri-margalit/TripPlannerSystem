@@ -52,19 +52,20 @@ export class SingleTrip implements OnInit {
       return;
     }
 
-    const currentUserId = Number(this.authService.currentUser()?.id);
+    const currentUserId = this.authService.currentUser()?.id;
 
     const newBooking = {
       tripId: Number(currentTrip.id),
-      userId: Number(currentUserId),
+      userId: currentUserId,
       people: this.people,
     };
 
     console.log('the order is ready to send', newBooking);
 
     this.apiService.post('bookings', newBooking).subscribe({
-      next: (response) => {
+      next: (response: any) => {
         console.log('the order have saved in the server', response);
+        this.bookingService.allBookings.update(currentBookings => [...currentBookings, response]);
         this.bookingService.bookingSuccess.set(true);
       },
       error: (err) => {
@@ -83,6 +84,6 @@ export class SingleTrip implements OnInit {
 
   closePopup() {
     this.bookingService.bookingSuccess.set(false);
-    this.router.navigate(['/home/my-trips']);
+    this.router.navigate(['/home/all-trips', this.trip()?.id]);
   }
 }
