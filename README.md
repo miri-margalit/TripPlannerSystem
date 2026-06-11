@@ -1,59 +1,81 @@
-# TripPlannerSystem
+# TripPlannerSystem ✈️🌍
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.7.
+מערכת מתקדמת לניהול, חיפוש והזמנת טיולים המבוססת על ארכיטקטורת **Angular Standalone** בשילוב **Angular Signals** לניהול המצב (State), ועובדת מול שרת **JSON Server** כ-REST API.
 
-## Development server
+---
 
-To start a local development server, run:
+## 📂 מבנה התיקיות המרכזי בפרויקט
+* `src/app/model/` - מכיל את הגדרות ה-Interfaces והמודלים של הנתונים (`trip.ts`, `booking.ts`, `user.ts`).
+* `src/app/services/` - שכבת השירותים והלוגיקה העסקית, האחראית על פניות ה-API וניהול ה-State הכללי.
+* `src/app/Pages/` - קומפוננטות עמודים מרכזיות (עמוד הבית, כל הטיולים, הטיולים שלי, טיול בודד, ועמודי ניהול אדמין).
+* `src/app/components/` - קומפוננטות עצמאיות לשימוש חוזר (כרטיסי טיול רגילים ומוזמנים).
 
-```bash
-ng serve
-```
+---
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## 🛠️ שירותים (Services) ותפקידם במערכת
 
-## Code scaffolding
+### 1. `APIService`
+* **נתיב:** `src/app/services/APIService.ts`
+* **תפקיד:** גנריזציה של בקשות HTTP המרכזת את העבודה מול ה-Base URL של השרת. משתמש ב-`HttpClient` לביצוע פעולות `get`, `post`, `put`, ו-`delete`.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+### 2. `AuthService`
+* **נתיב:** `src/app/services/AuthService.ts`
+* **תפקיד:** ניהול הזדהות משתמשים. מחזיק Signal מרכזי בשם `currentUser` שמייצג את המשתמש המחובר הנוכחי במערכת, ומספק פונקציות להתחברות, הרשמה וניתוק (`logout`).
 
-```bash
-ng generate component component-name
-```
+### 3. `TripsService`
+* **נתיב:** `src/app/services/TripsService.ts`
+* **תפקיד:** ניהול מידע הטיולים (למשתמשים ולאדמין). מחזיק Signal בשם `allTrips` ומספק פונקציות למשיכת טיולים (`getTrips`), הוספת טיול חדש על ידי אדמין (`addTrip`), עדכון טיול קיים (`updateTrip`), ומחיקת טיול מהמערכת (`deleteTrip`).
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+### 4. `bookingService`
+* **נתיב:** `src/app/services/bookingService.ts`
+* **תפקיד:** ניהול ההזמנות במערכת. מחזיק Signal בשם `allBookings` ומספק את פונקציית `loadBookingsByUserId(userId)` השולפת מהשרת ומסננת את ההזמנות ששייכות אך ורק למשתמש הנוכחי.
 
-```bash
-ng generate --help
-```
+---
 
-## Building
+## 🔄 זרימות עבודה מרכזיות במערכת (System Flows)
 
-To build the project run:
+### 🔑 תהליך ההתחברות (Login Flow)
+1. המשתמש מזין פרטים בקומפוננטת ה-Login.
+2. המערכת פונה ל-`AuthService` שמאמת את הפרטים מול השרת באמצעות `APIService`.
+3. עם הצלחת האימות, האובייקט נשמר ב-Signal המרכזי `currentUser` ב-`AuthService`.
+4. מתבצע ניתוח אוטומטי בעזרת `Router` לעמוד הבית (`/home`).
+5. קומפוננטת `Home` קוראת את הסיגנל `user = this.authService.currentUser` ומציגה דינמית מעל לחצני הניווט את ברכת המשתמש: `@if (user()) { שלום, {{ user()?.name }} }`.
 
-```bash
-ng build
-```
+### 📅 תהליך הזמנת טיול (Booking Flow)
+1. בעמוד כל הטיולים, לחיצה על כרטיס מובילה לקומפוננטת `SingleTrip`.
+2. הקומפוננטה מחלצת את מזהה הטיול דרך ה-URL באמצעות `ActivatedRoute` ומציגה את הנתונים כלייב דרך Signal מחושב: `trip = computed(() => this.tripService.getTripById(...))`.
+3. בלחיצה על כפתור הרישום מופעלת הפונקציה `bookTrip()`.
+4. הפונקציה יוצרת אובייקט הזמנה המכיל את `tripId`, ה-`userId` וכמות הנוסעים `people`, ושולחת אותו ב-`POST` לשרת. עם קבלת התשובה בהצלחה, מתבצע עדכון מיידי של ה-State המקומי: `this.bookingService.allBookings.update(list => [...list, response])`.
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+### 👑 תהליך ניהול מנהל (Admin Flow)
+1. בזמן התחברות המשתמש, המערכת בודקת את שדה הבוליאני `isAdmin` מתוך אובייקט המשתמש בשרת.
+2. אם `user.isAdmin === true`, המערכת חושפת בסרגל הניווט העליון או בעמוד הבית כפתורים ואפשרויות ייעודיות לניהול (כגון הוספת טיול, עריכה או מחיקה).
+3. פעולות האדמין מתבצעות ישירות מול השרת דרך פונקציות `addTrip`, `updateTrip` ו-`deleteTrip` בקובץ `TripsService.ts`.
+4. המערכת מגינה על נתיבי הניהול כך שמשתמש רגיל שאינו אדמין (`isAdmin: false`) לא יוכל לצפות או לבצע שינויים בטיולים הגלובליים, וכפתורי הניהול מוסתרים ממנו ב-UI בעזרת תנאי `@if (user()?.isAdmin)`.
 
-## Running unit tests
+---
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+## 🚦 ניהול מצב וחלוקת אחריות (State Management)
 
-```bash
-ng test
-```
+המערכת משתמשת ב-**Angular Signals** לניהול מצב ריאקטיבי, המפריד לחלוטין בין שכבת התצוגה (Components) לשכבת המידע והלוגיקה (Services):
 
-## Running end-to-end tests
+* **הפרדת לוגיקה:** הקומפוננטות אחראיות אך ורק על רינדור ה-UI והקשבה לאירועי משתמש. כל ניהול המידע, קריאות ה-HTTP ועדכון המצב מרוכזים בתוך ה-Services.
+* **צריכת מידע דינמית:** בקומפוננטת `MyTrips`, המערכת משתמשת ב-`computed` כדי לבצע מיזוג (Join) בזמן אמת בין סיגנל ההזמנות לסיגנל הטיולים. מנגנון זה מבטיח שאם הזמנה מבוטלת או מוסרת, עדכון הסיגנל המרכזי יגרום לכרטיס להיעלם מהמסך באופן מיידי.
 
-For end-to-end (e2e) testing, run:
+---
 
-```bash
-ng e2e
-```
+## 🔍 הפניות ישירות לקוד ומזהים מרכזיים
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+* **בדיקת הרשמה כפולה (Double Booking Prevention):**
+  * **קובץ:** `src/app/Pages/single-trip/single-trip.ts`
+  * **פונקציה:** `isUserBooked(tripId)`
+  * **מימוש ב-UI:** משתמש ב-`[disabled]="isUserBooked(currentTrip.id)"` כדי לחסום את כפתור הרישום.
 
-## Additional Resources
+* **סינון ומיון (Filtering & Sorting):**
+  * **קובץ:** `src/app/Pages/all-trips/all-trips.ts`
+  * **סיגנלים משפיעים:** `searchTerm = signal<string>('')`, `sortBy = signal<string>('none')`.
+  * **פונקציה מרכזית:** `filteredAndSortedTrips = computed(...)` המבצעת סינון live לפי יעד/שם הטיול ומיון מערך הנתונים לפי מחיר, ומזינה את הלולאה המתקדמת `@for` ב-HTML.
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+* **ניהול טיולים ע"י מנהל (Admin Trip Management):**
+  * **קובץ שירות:** `src/app/services/TripsService.ts`
+  * **פונקציות מפתח:** `addTrip(trip)`, `updateTrip(trip)`, `deleteTrip(tripId)`.
