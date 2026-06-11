@@ -24,13 +24,23 @@ export class BookedTripCard {
     return this.tripService.getTripById(String(booking.tripId) as any);
   });
 
+  showDeleteConfirm = false;
+
+  openDeleteConfirm() {
+    this.showDeleteConfirm = true;
+  }
+
+  closeDeleteConfirm() {
+    this.showDeleteConfirm = false;
+  }
+
   cancelBooking() {
     const bookingId = this.bookedTrip()?.id;
-
     if (!bookingId) return;
+
     this.apiService.delete(`bookings/${bookingId}`).subscribe({
       next: () => {
-        console.log('the order cancle, and removed from the server');
+        this.showDeleteConfirm = false;
         this.bookingCanceled.emit();
       },
       error: (err) => console.error('problems with deleting order', err),

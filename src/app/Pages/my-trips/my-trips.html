@@ -1,4 +1,7 @@
-@if (bookings().length == 0) {
+@if (tripsservice.loading()) {
+  <p>Loading...</p>
+
+} @else if (bookings().length == 0) {
   <p>run book your next trip</p>
 } @else {
   @for (booking of bookings(); track booking.id) {

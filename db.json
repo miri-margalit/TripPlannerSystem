@@ -34,6 +34,13 @@
       "email": "miri@miri",
       "password": "987654321",
       "isAdmin": false
+    },
+    {
+      "id": "salOOBd3atU",
+      "name": "מרים מרגלית",
+      "email": "miri418438@gmail.com",
+      "password": "987654321",
+      "isAdmin": false
     }
   ],
   "trips": [
@@ -180,6 +187,54 @@
       "userId": 1780520304433,
       "people": 4,
       "id": "E4oCMgtULuI"
+    },
+    {
+      "tripId": 1,
+      "userId": null,
+      "people": 4,
+      "id": "ZWPi9mXIO48"
+    },
+    {
+      "tripId": 1,
+      "userId": null,
+      "people": 8,
+      "id": "04ZmAJogtmg"
+    },
+    {
+      "tripId": 1,
+      "userId": null,
+      "people": 8,
+      "id": "QD_9Bq17S8E"
+    },
+    {
+      "tripId": 1,
+      "userId": null,
+      "people": 3,
+      "id": "kJyTwnNv028"
+    },
+    {
+      "tripId": 1,
+      "userId": null,
+      "people": 3,
+      "id": "U0SWHn73bzE"
+    },
+    {
+      "tripId": 1,
+      "userId": null,
+      "people": 3,
+      "id": "2seFZKLWUT8"
+    },
+    {
+      "tripId": "1",
+      "userId": "salOOBd3atU",
+      "people": 5,
+      "id": "1cr-_bxL1vQ"
+    },
+    {
+      "tripId": "7",
+      "userId": "salOOBd3atU",
+      "people": 4,
+      "id": "u9wrdyLRRoo"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

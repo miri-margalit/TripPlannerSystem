@@ -12,7 +12,7 @@ import { bookingService } from '../../services/bookingService';
   templateUrl: './single-trip.html',
   styleUrl: './single-trip.css',
 })
-export class SingleTrip implements OnInit {
+export class SingleTrip {
   private route = inject(ActivatedRoute);
   private tripService = inject(TripsService);
   private apiService = inject(APIService);
@@ -24,10 +24,6 @@ export class SingleTrip implements OnInit {
   bookings = this.bookingService.allBookings;
   people: number = 1;
   bookingSuccess = this.bookingService.bookingSuccess;
-
-  ngOnInit(): void {
-    this.bookingService.bookingSuccess.set(false);
-  }
 
   increasePeople() {
     this.people++;
@@ -52,11 +48,11 @@ export class SingleTrip implements OnInit {
       return;
     }
 
-    const currentUserId = Number(this.authService.currentUser()?.id);
+    const currentUserId = String(this.authService.currentUser()?.id);
 
     const newBooking = {
-      tripId: Number(currentTrip.id),
-      userId: Number(currentUserId),
+      tripId: String(currentTrip.id),
+      userId: String(currentUserId),
       people: this.people,
     };
 
@@ -66,6 +62,9 @@ export class SingleTrip implements OnInit {
       next: (response) => {
         console.log('the order have saved in the server', response);
         this.bookingService.bookingSuccess.set(true);
+
+        const userId = String(this.authService.currentUser()?.id);
+        this.bookingService.loadBookingsByUserId(userId);
       },
       error: (err) => {
         console.error('problem with saving the new order', err);

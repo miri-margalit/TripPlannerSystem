@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { AuthService } from '../../services/AuthService';
 
@@ -8,9 +8,13 @@ import { AuthService } from '../../services/AuthService';
   templateUrl: './register.html',
   styleUrl: './register.css',
 })
-export class Register {
+export class Register implements OnInit {
   private authService = inject(AuthService);
   error = this.authService.error;
+
+  ngOnInit() {
+    this.error.set('');
+  }
 
   onSubmit(form: NgForm) {
     if (form.invalid) {

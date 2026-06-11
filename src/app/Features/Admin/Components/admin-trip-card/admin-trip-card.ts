@@ -33,6 +33,7 @@ export class AdminTripCard implements OnInit {
   onCloseEdit() {
     this.isEditOpen.set(false);
   }
+
   onDeleteClick() {
     if (this.participants() > 0) {
       this.deleteError.set(

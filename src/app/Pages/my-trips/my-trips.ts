@@ -1,9 +1,9 @@
 import { Component, computed, effect, inject, OnInit } from '@angular/core';
 import { AuthService } from '../../services/AuthService';
 import { bookingService } from '../../services/bookingService';
-import { BookedTripCard } from '../../components/booked-trip-card/booked-trip-card';
 import { TripCard } from '../../components/trip-card/trip-card';
 import { TripsService } from '../../services/TripsService';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-my-trips',
@@ -18,18 +18,17 @@ export class MyTrips {
 
   logesUser = this.authService.currentUser;
   bookings = this.bookingService.allBookings;
+  tripsservice = this.tripsSetvice;
 
   constructor() {
-    effect(() => {
-      const user = this.logesUser();
+  effect(() => {
+    const user = this.logesUser();
+    if (!user?.id) return;
 
-      if (!user?.id) return;
-
-      this.bookingService.loadBookingsByUserId(user.id);
-    });
-
-    this.tripsSetvice.getTrips();
-  }
+    this.tripsSetvice.getTrips(); // טען טיולים קודם
+    this.bookingService.loadBookingsByUserId(user.id);
+  });
+}
 
   getTrip(bookingId: string) {
     return this.tripsSetvice.getTripById(bookingId);
