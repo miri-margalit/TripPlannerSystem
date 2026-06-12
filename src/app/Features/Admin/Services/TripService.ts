@@ -34,6 +34,15 @@ export class TripService {
     });
   }
 
+  addTrip(trip: trip) {
+    this.api.post<trip>('trips', trip).subscribe({
+      next: (data) => {
+        this.allTrips.update((trips) => [...trips, data]);
+      },
+      error: (err) => this.error.set('Failed to add trip'),
+    });
+  }
+
   updateTripById(tripId: string, trip: trip) {
     this.api.put<trip>(`trips/${tripId}`, trip).subscribe({
       next: (data) => {
@@ -51,6 +60,4 @@ export class TripService {
       error: (err) => this.error.set('Failed to delete selected trip'),
     });
   }
-
-  
 }
