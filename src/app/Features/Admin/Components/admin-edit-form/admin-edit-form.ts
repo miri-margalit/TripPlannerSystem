@@ -22,7 +22,14 @@ export class AdminEditForm implements OnInit {
   }
 
   onSave() {
-    this.tripService.updateTripById(this.formData().id, this.formData());
+    console.log('formData:', this.formData());
+    console.log('has id:', this.formData().id);
+
+    if (this.formData().id) {
+      this.tripService.updateTripById(this.formData().id, this.formData());
+    } else {
+      this.tripService.addTrip(this.formData());
+    }
     this.closeForm.emit();
   }
 
