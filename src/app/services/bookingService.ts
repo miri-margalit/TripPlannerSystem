@@ -20,7 +20,7 @@ export class bookingService {
     return this.api.post<booking>('bookings', booking);
   }
 
-    loadBookingsByUserId(userId: any) {
+  loadBookingsByUserId(userId: any) {
     this.api.get<booking[]>('bookings').subscribe((allBookings) => {
       console.log('API RESPONSE:', allBookings);
 
@@ -33,5 +33,4 @@ export class bookingService {
       this.allBookings.set(filtered);
     });
   }
-
 }

@@ -76,6 +76,20 @@
       "email": "leah@gmail.com",
       "password": "123456789",
       "isAdmin": false
+    },
+    {
+      "id": "FNuMJZwO6Ic",
+      "name": "789455",
+      "email": "leah123@gmail.com",
+      "password": "789456123",
+      "isAdmin": false
+    },
+    {
+      "id": "-sZKC5efznU",
+      "name": "1234",
+      "email": "miri123@gmail.com",
+      "password": "789456123",
+      "isAdmin": false
     }
   ],
   "trips": [
@@ -113,9 +127,9 @@
       "id": "5",
       "name": "Amsterdam Canals",
       "destination": "Amsterdam, Netherlands",
-      "startDate": "2026-05-20",
+      "startDate": "2026-05-14",
       "endDate": "2026-05-25",
-      "price": 1300,
+      "price": 5222,
       "description": "Canal cruises, Van Gogh Museum, and local markets.",
       "image": "https://picsum.photos/id/1031/400/200"
     },
@@ -172,18 +186,6 @@
   ],
   "bookings": [
     {
-      "id": "2",
-      "tripId": 2,
-      "userId": 3,
-      "people": 5
-    },
-    {
-      "id": "3",
-      "tripId": 3,
-      "userId": 1,
-      "people": 5
-    },
-    {
       "id": "4",
       "tripId": 5,
       "userId": 4,
@@ -193,7 +195,7 @@
       "id": "5",
       "tripId": 8,
       "userId": 3,
-      "people": 1
+      "people": 4
     },
     {
       "id": "6",
@@ -308,6 +310,24 @@
       "userId": "1781222753173",
       "people": 4,
       "id": "rc6c67Wi4ZY"
+    },
+    {
+      "tripId": 3,
+      "userId": "giQhJlK6dnQ",
+      "people": 2,
+      "id": "ut7nCpkYPFU"
+    },
+    {
+      "tripId": 3,
+      "userId": "FNuMJZwO6Ic",
+      "people": 1,
+      "id": "IYyNZRrdPDI"
+    },
+    {
+      "tripId": 5,
+      "userId": "1781256372523",
+      "people": 4,
+      "id": "MC87FU4fhCw"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

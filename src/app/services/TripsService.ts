@@ -31,16 +31,4 @@ export class TripsService {
     const trips = this.allTrips();
     return trips.find((t) => String(t.id) === String(id));
   }
-
-  addTrip(trip: trip) {
-    return this.api.post('trips', trip);
-  }
-
-  updateTrip(trip: trip) {
-    return this.api.put(`trips/${trip.id}`, trip);
-  }
-
-  deleteTrip(tripId: number) {
-    return this.api.delete(`trips/${tripId}`);
-  }
 }
